@@ -1,15 +1,18 @@
 const express = require('express');
+const path = require('path');
 
 const app = express();
 
-app.get('/', (req, res) => {
+//Middleware response ile request arasındaki oluşan olaylar bütünü
+//Middleware fonksiyonu 
+//Middlewarelar sırayla çalışır
 
-  const blog = {
-    id: 1,
-    title: "Blog title",
-    description: "Blog description"
-  }
-  res.send(blog)
+//İlgili middleware fonksiyonunu yazarak public klasörümüzü uygulamamıza kaydedelim.
+app.use(express.static('public'))    
+
+app.get('/', (req, res) => {
+  
+  res.sendFile(path.resolve(__dirname,'temp/index.html'));
 })
 
 const port = 3000;
