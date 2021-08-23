@@ -1,8 +1,16 @@
 const express = require('express');
-const ejs = require('ejs');2
+const mongoose = require('mongoose');
+const ejs = require('ejs');
 const path = require('path');
+const Photo = require('./models/Photo');
 
 const app = express();
+
+//Connect to DB
+mongoose.connect('mongodb://localhost/pcat-test-db', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 //template engine 
 app.set("view engine","ejs");
@@ -11,7 +19,9 @@ app.set("view engine","ejs");
 //Middleware fonksiyonu 
 //Middlewarelar sırayla çalışır
 //İlgili middleware fonksiyonunu yazarak public klasörümüzü uygulamamıza kaydedelim.
-app.use(express.static('public'))    
+app.use(express.static('public'))
+app.use(express.urlencoded({extended:true}));
+app.use(express.json());    
 
 //routes
 app.get('/', (req, res) => {
@@ -30,6 +40,13 @@ app.get('/add', (req, res) => {
   
   //res.sendFile(path.resolve(__dirname,'temp/index.html'));
   res.render('add');
+})
+
+app.post('/photos', async(req, res) => {
+  
+  //res.sendFile(path.resolve(__dirname,'temp/index.html'));
+  await Photo.create(req.body);
+  res.redirect('/');
 })
 
 const port = 3000;
