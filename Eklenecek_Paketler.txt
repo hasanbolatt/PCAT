@@ -1,0 +1,13 @@
+- Eğer projeye yeni başlanıyorsa - npm init - diyerek bir paket haline getir..
+- npm i express - yaparak express paketini dahil et..
+- npm i -D nodemon - yaparak nodemon paketini yükle..
+- package.json ' a git ve "test" kısmını sil yerine "start": "nodemon app.js" yaz..
+
+- Eğer yeni bir veritabanı oluşturduysan o veri tabanı için birkaç adet veri ekle.. 
+o şekilde refresh ettiğinde veritabanı oluşur.. 
+
+- .ignore dosyası hazırla..(internetteki sayfadan oluştur).
+
+-Verilerin daha düzgün görünmesi için templatemo-video-catalog.css dosyasına git ve ctrl+f ile
+gelen alana tm-catalog-item yapıştır ve space-between olan yeri - start - olarak değiştir. 
+ 
